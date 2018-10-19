@@ -1,0 +1,84 @@
+<mat-card @fade>
+
+  <p class="text-center">Регистрация для получения доступа</p>
+
+  <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <input matInput
+             type="email"
+             placeholder="Email"
+             formControlName="email"
+      >
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+        <mat-error *ngIf="form.get('email')['errors']['email'] && !form.get('email')['errors']['required']">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="form.get('email')['errors']['required']">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput
+             type="password"
+             placeholder="Password"
+             formControlName="password"
+      >
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+        <mat-error *ngIf="form.get('password')['errors']['minlength'] && !form.get('password')['errors']['required'] ">
+          Password must contain {{form.get('password')['errors']['minlength']['requiredLength']}} .Now contain
+          {{form.get('password')['errors']['minlength']['actualLength']}}
+        </mat-error>
+        <mat-error
+          *ngIf="form.get('password')['errors']['numError']&& !form.get('password')['errors']['required'] && !form.get('password')['errors']['minlength']">
+          Password must contain a number.
+        </mat-error>
+        <mat-error *ngIf="form.get('password')['errors']['required']">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput
+             type="text"
+             placeholder="Name"
+             formControlName="name"
+      >
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">
+        <mat-error *ngIf="form.get('name')['errors']['required']">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <label for="agree">
+      <input
+        class="checkbox"
+        id="agree"
+        type="checkbox"
+        formControlName="agree"
+      >
+      <span>Согласен с правилами</span>
+
+      <mat-error *ngIf="form.get('agree').invalid && form.get('agree').touched">
+        <mat-error *ngIf="form.get('agree')['errors']['required']">
+          Agree is <strong>required</strong>
+        </mat-error>
+      </mat-error>
+    </label>
+    <mat-card-actions>
+      <button mat-fab color="accent"
+              type="submit"
+              [disabled]="form.invalid"
+
+      >Регистр
+      </button>
+      <p class="text-p">
+        Уже есть аккаунт? <a [routerLink]="'/login'">Войти!</a>
+      </p>
+    </mat-card-actions>
+  </form>
+
+</mat-card>

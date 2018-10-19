@@ -1,0 +1,13 @@
+.message {
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+  font: normal 300 32px Arial;
+}
+  div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

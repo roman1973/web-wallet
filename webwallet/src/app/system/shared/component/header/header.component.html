@@ -1,0 +1,31 @@
+<mat-toolbar class="header">
+  <mat-toolbar-row>
+    <button   mat-icon-button color="accent" (click)="fingerClick()">
+      <mat-icon class="huge">fingerprint</mat-icon>
+    </button>
+      <span>
+        <p>Webmoney
+          <b>the best</b>
+        </p>
+      </span>
+    <span class="date">
+      {{date | date : 'HH:mm:ss'}}
+    </span>
+    <span class="spantime">
+      <p class="time">
+         <b>session time</b>
+        {{sesiontime | date : 'mm:ss'}}
+        </p>
+        <button class="drop huge" mat-icon-button [matMenuTriggerFor]="menu">
+         <mat-icon>thumb_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logOut()">
+            <mat-icon>power_settings_new</mat-icon>
+            <span>Logout</span>
+          </button>
+         </mat-menu>
+
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>

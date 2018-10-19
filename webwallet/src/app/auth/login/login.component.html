@@ -1,0 +1,52 @@
+<mat-card @fade>
+  <p class="text-center">Войдите для работы</p>
+  <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <input matInput
+             type="text"
+             placeholder="Email"
+             formControlName="email"
+
+      >
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="form.get('email').invalid && form.get('email').touched" >
+      <mat-error *ngIf="form.get('email')['errors']['email'] && !form.get('email')['errors']['required']">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="form.get('email')['errors']['required']">
+        Email is <strong>required</strong>
+      </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput
+             type="password"
+             placeholder="Password"
+             formControlName="password"
+      >
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="form.get('password').invalid && form.get('password').touched" >
+        <mat-error *ngIf="form.get('password')['errors']['minlength'] && !form.get('password')['errors']['required'] ">
+          Password must contain {{form.get('password')['errors']['minlength']['requiredLength']}} .Now contain {{form.get('password')['errors']['minlength']['actualLength']}}
+        </mat-error>
+        <mat-error *ngIf="form.get('password')['errors']['numError']&& !form.get('password')['errors']['required'] && !form.get('password')['errors']['minlength']">
+          Password must contain a number.
+        </mat-error>
+        <mat-error *ngIf="form.get('password')['errors']['required']">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-fab color="accent"
+              type="submit"
+              [disabled]="form.invalid"
+
+      >Войти</button>
+      <p class="text-p">
+        Нет аккаунта? <a [routerLink]="'/registration'">Зарегистрироваться!</a>
+      </p>
+      </mat-card-actions>
+  </form>
+
+</mat-card>

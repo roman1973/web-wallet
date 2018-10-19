@@ -1,0 +1,39 @@
+.content{
+  position: relative;top: 55px;
+
+  }
+table {
+  width: 100%;
+  border: none;
+}
+
+mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  position: fixed;left:0;
+  z-index: 1000;
+  background-color: white;
+
+
+}
+
+mat-paginator{
+  background-color: white;
+  position: fixed;top: 600px;left: 0;
+  z-index: 1000;
+  width: 100%;
+
+}
+
+td, th {
+  width: 25%;
+}
+.first-header-row th{
+  border-bottom: none;
+  font: italic bold 20px Arial;
+  color: #8b211e;
+  width: auto;
+}
+.second-header-row {
+  font-style: italic;
+}
